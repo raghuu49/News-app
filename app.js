@@ -45,10 +45,6 @@ function fillDatainCard(cardClone,article){
     cardClone.addEventListener('click', function() {
         window.open(article.url, '_blank'); // Open article URL in a new tab
     });
-    saveButton.addEventListener('click', function() {
-        saveArticle(article);
-    });
-    
 }
 
 const searchButton=document.querySelector(".search-button");
@@ -79,23 +75,3 @@ darkMode.addEventListener('click',function(){
     else darkMode.innerHTML="Switch to Dark Mode"
 });
 
-function saveArticle(article) {
-    let savedArticles = JSON.parse(localStorage.getItem('savedArticles')) || [];
-    savedArticles.push(article);
-    localStorage.setItem('savedArticles', JSON.stringify(savedArticles));
-}
-
-function loadSavedArticles() {
-    const savedArticles = JSON.parse(localStorage.getItem('savedArticles')) || [];
-    const savedArticlesContainer = document.getElementById('saved-articles-container');
-
-    savedArticlesContainer.innerHTML = '';
-    savedArticles.forEach(article => {
-        const cardClone = cardTemplate.content.cloneNode(true);
-        fillDatainCard(cardClone, article);
-        savedArticlesContainer.appendChild(cardClone);
-    });
-}
-
-// Call loadSavedArticles when the page loads to display saved articles
-document.addEventListener('DOMContentLoaded', loadSavedArticles);
