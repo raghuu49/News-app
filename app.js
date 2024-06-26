@@ -27,7 +27,6 @@ function fillDatainCard(cardClone,article){
     const title=cardClone.querySelector("#news-title");
     const source=cardClone.querySelector("#news-source");
     const desc=cardClone.querySelector("#news-desc");
-    const saveButton = cardClone.querySelector('#save-article');
 
     if(image){
         image.src=article.urlToImage||'';
